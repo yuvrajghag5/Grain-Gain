@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables</title>
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <style>
+        body {
+            padding-bottom: 70px; /* Adjust based on navbar height */
+        }
+        .category-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .category-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .product-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-nutrition {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .nutrition-item {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <a href="Home.html" class="back-button">← Back to Categories</a>
+    
+    <div class="category-header">
+        <div class="category-emoji">🥛</div>
+        <h1>Dairy</h1>
+    </div>
+
+    <div class="products-grid">
+        <!-- Product Container Template -->
+        <div class="product-container">
+            <!-- <img src="/api/placeholder/300/200" alt="[Product Name]" class="product-image"> -->
+            <div class="product-name">Milk</div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 3.15g</div>
+                <div class="nutrition-item">Carbs: 4.67g</div>
+                <div class="nutrition-item">Fat: 3.25g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 61 kcal</div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <!-- <img src="/api/placeholder/300/200" alt="[Product Name]" class="product-image"> -->
+            <div class="product-name">Milk (Skimmed/Non-fat)</div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 3.37g</div>
+                <div class="nutrition-item">Carbs: 4.96g</div>
+                <div class="nutrition-item">Fat: 0.18g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 35 kcal</div>
+            </div> 
+        </div>
+       
+        <div class="product-container">
+            <div class="product-name">Milk (2% Reduced Fat)</div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 3.28g</div>
+                <div class="nutrition-item">Carbs: 4.96g</div>
+                <div class="nutrition-item">Fat: 1.98g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 50 kcal</div>
+            </div>
+
+            
+        </div>
+        
+        <div class="product-container">
+            <div class="product-name">Cheddar Cheese</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 24.9g</div>
+        <div class="nutrition-item">Carbs: 1.28g</div>
+        <div class="nutrition-item">Fat: 33.14g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 402 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Swiss Cheese </div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 27.83g</div>
+                <div class="nutrition-item">Carbs: 5.37g</div>
+                <div class="nutrition-item">Fat: 29.28g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 393 kcal</div>
+            </div>
+        
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Mozzarella Cheese</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 22.17g</div>
+        <div class="nutrition-item">Carbs: 2.2g</div>
+        <div class="nutrition-item">Fat: 22.35g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 300 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Yogurt</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 3.47g</div>
+        <div class="nutrition-item">Carbs: 4.66g</div>
+        <div class="nutrition-item">Fat: 3.25g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 61 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+
+            <div class="product-name">Yogurt (Low Fat)</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 4.66g</div>
+        <div class="nutrition-item">Carbs: 6.05g</div>
+        <div class="nutrition-item">Fat: 1.55g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 63 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Greek Yogurt</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 9.91g</div>
+        <div class="nutrition-item">Carbs: 3.98g</div>
+        <div class="nutrition-item">Fat: 5.63g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 97 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Butter</div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 0.85g</div>
+                <div class="nutrition-item">Carbs: 0.06g</div>
+                <div class="nutrition-item">Fat: 81.11g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 717 kcal</div>
+            </div>
+        
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Cream</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 2.08g</div>
+        <div class="nutrition-item">Carbs: 2.81g</div>
+        <div class="nutrition-item">Fat: 36.0g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 340 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Sour Cream</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 2.93g</div>
+        <div class="nutrition-item">Carbs: 3.67g</div>
+        <div class="nutrition-item">Fat: 19.0g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 193 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Cottage Cheese</div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 11.12g</div>
+        <div class="nutrition-item">Carbs: 3.38g</div>
+        <div class="nutrition-item">Fat: 4.3g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 98 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Buttermilk </div>
+    <div class="product-nutrition">
+        <div class="nutrition-item">Protein: 3.31g</div>
+        <div class="nutrition-item">Carbs: 4.8g</div>
+        <div class="nutrition-item">Fat: 0.9g</div>
+        <div class="nutrition-item">Fiber: 0g</div>
+        <div class="nutrition-item">Calories: 40 kcal</div>
+    </div>
+
+            
+        </div>
+
+        <div class="product-container">
+            <div class="product-name">Parmesan Cheese</div>
+            <div class="product-nutrition">
+                <div class="nutrition-item">Protein: 38.46g</div>
+                <div class="nutrition-item">Carbs: 3.36g</div>
+                <div class="nutrition-item">Fat: 29.28g</div>
+                <div class="nutrition-item">Fiber: 0g</div>
+                <div class="nutrition-item">Calories: 431 kcal</div>
+            </div>
+        
+            
+        </div>
+
+        
+
+    
+    </div>
+
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main">
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Categories</title>
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <link rel="stylesheet" href="css-Home.css">
+    <script>
+        function searchProducts() {
+            const query = document.getElementById("searchInput").value;
+            const resultsContainer = document.getElementById("results");
+            
+            // Clear results if search query is empty
+            if (!query.trim()) {
+                resultsContainer.innerHTML = "";
+                return;
+            }
+
+            // Show loading state
+            resultsContainer.innerHTML = "<li>Searching...</li>";
+            
+            fetch(`/search?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    resultsContainer.innerHTML = "";
+                    
+                    if (data.success) {
+                        if (data.results.length > 0) {
+                            data.results.forEach(item => {
+                                const listItem = document.createElement("li");
+                                listItem.className = "search-result-item";
+                                listItem.innerHTML = `
+                                    <strong>${item.Name}</strong>
+                                    <div class="nutrition-info">
+                                        <span>Calories: ${item["Calories (kcal)"] || 'N/A'}kcal</span>
+                                        <span>Protein: ${item["Protein (g)"] || 'N/A'}g</span>
+                                        <span>Carbs: ${item["Carbohydrates (g)"] || 'N/A'}g</span>
+                                    </div>
+                                `;
+                                resultsContainer.appendChild(listItem);
+                            });
+                        } else {
+                            resultsContainer.innerHTML = "<li>No results found</li>";
+                        }
+                    } else {
+                        resultsContainer.innerHTML = "<li>Error searching database</li>";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = "<li>Error connecting to server</li>";
+                });
+        }
+
+        // Add debouncing to prevent too many requests
+        let searchTimeout;
+        function debouncedSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(searchProducts, 300);
+        }
+    </script>
+    <style>
+        .search-bar {
+            position: relative;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+    
+        .search-bar-items {
+            position: flex;
+            justify-content: center;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        #results {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            position: absolute;
+            top: 55px;
+            right: 100px;
+        }
+        
+        .search-result-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .nutrition-info {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .nutrition-info span {
+            margin-right: 15px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <div class="search-bar-items">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    onkeyup="debouncedSearch()" 
+                    placeholder="Search for foods..."
+                >
+                <ul id="results">
+                    <!-- Search results will appear here dynamically -->
+                </ul>
+            </div>
+        </div>
+        <!-- Rest of your HTML remains the same -->
+
+        <div class="categories">
+            <div class="category">
+                <a href="veg.html">🥬</a>
+                <p>Vegetables</p>
+            </div>
+            <div class="category">
+                <a  href="Fruits.html">🍎</a>
+                <p>Fruits</p>
+            </div>
+            <div class="category">
+                <a  href="Lentils.html" >🫘</a>
+                <p>Lentils</p>
+            </div>
+            <div class="category">
+                <a  href="Dairy.html" >🥛</a>
+                <p>Dairy</p>
+            </div>
+            <div class="category">
+                <a href="Meat.html">🥩</a>
+                <p>Meats</p>
+            </div>
+            <div class="category">
+                <a  href="Fish.html" >🐟</a>
+                <p>Fish</p>
+            </div>
+            <div class="category">
+                <a  href="Grains.html" >🌾</a>
+                <p>Grains</p>
+            </div>
+            <div class="category">
+                <a  href="Nuts.html" >🥜</a>
+                <p>Nuts</p>
+            </div>
+            <div class="category">
+                <a  href="Seeds.html" >🌱</a>
+                <p>Seeds</p>
+            </div>
+        </div>
+    </div><nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main" >
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+        <!-- <button class="nav-item" id="signout-button">
+            🚪<span>Sign Out</span>
+        </button> -->
+    </nav>
+</div>
+</body>
+</html>

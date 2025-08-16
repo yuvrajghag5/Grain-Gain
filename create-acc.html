@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <script type="module" src="register.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        button {
+            background: #4A90E2;
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #357ABD;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .strength-weak { color: #e74c3c; }
+        .strength-medium { color: #f39c12; }
+        .strength-strong { color: #27ae60; }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+                <div class="error" id="nameError">Please enter your full name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                <div class="error" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <div class="password-strength" id="passwordStrength"></div>
+                <div class="error" id="passwordError">Password must be at least 8 characters</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+                <div class="error" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+
+            <button type="submit" id="submitBtn">Create Account</button>
+        </form>
+        <div class="success-message" id="successMessage">
+            Account created successfully!
+            <a href="Sign-in.html">Login</a>
+        </div>
+    </div>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('signupForm');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const emailInput = document.getElementById('email');
+            const fullNameInput = document.getElementById('fullName');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+
+            // Password strength checker
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strengthIndicator = document.getElementById('passwordStrength');
+                let strength = 0;
+                
+                if (password.length >= 8) strength++;
+                if (password.match(/[A-Z]/)) strength++;
+                if (password.match(/[0-9]/)) strength++;
+                if (password.match(/[^A-Za-z0-9]/)) strength++;
+
+                switch(strength) {
+                    case 0:
+                    case 1:
+                        strengthIndicator.textContent = 'Weak password';
+                        strengthIndicator.className = 'password-strength strength-weak';
+                        break;
+                    case 2:
+                    case 3:
+                        strengthIndicator.textContent = 'Medium password';
+                        strengthIndicator.className = 'password-strength strength-medium';
+                        break;
+                    case 4:
+                        strengthIndicator.textContent = 'Strong password';
+                        strengthIndicator.className = 'password-strength strength-strong';
+                        break;
+                }
+            });
+
+            // Real-time validation
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showError(input, errorDiv, message) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = message;
+                input.style.borderColor = '#e74c3c';
+            }
+
+            function hideError(input, errorDiv) {
+                errorDiv.style.display = 'none';
+                input.style.borderColor = '#ddd';
+            }
+
+            emailInput.addEventListener('input', function() {
+                const errorDiv = document.getElementById('emailError');
+                if (!validateEmail(this.value)) {
+                    showError(this, errorDiv, 'Please enter a valid email address');
+                } else {
+                    hideError(this, errorDiv);
+                }
+            });
+
+            passwordInput.addEventListener('input', function() {
+                const errorDiv = document.getElementById('passwordError');
+                if (this.value.length < 8) {
+                    showError(this, errorDiv, 'Password must be at least 8 characters');
+                } else {
+                    hideError(this, errorDiv);
+                }
+            });
+
+            confirmPasswordInput.addEventListener('input', function() {
+                const errorDiv = document.getElementById('confirmPasswordError');
+                if (this.value !== passwordInput.value) {
+                    showError(this, errorDiv, 'Passwords do not match');
+                } else {
+                    hideError(this, errorDiv);
+                }
+            }); 
+ 
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validate full name
+                if (fullNameInput.value.trim() === '') {
+                    showError(fullNameInput, document.getElementById('nameError'), 'Please enter your full name');
+                    isValid = false;
+                }
+
+                // Validate email
+                if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, document.getElementById('emailError'), 'Please enter a valid email address');
+                    isValid = false;
+                }
+
+                // Validate password
+                if (passwordInput.value.length < 8) {
+                    showError(passwordInput, document.getElementById('passwordError'), 'Password must be at least 8 characters');
+                    isValid = false;
+                }
+
+                // Validate password confirmation
+                if (confirmPasswordInput.value !== passwordInput.value) {
+                    showError(confirmPasswordInput, document.getElementById('confirmPasswordError'), 'Passwords do not match');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    // Here you would typically send the data to your server
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Creating Account...';
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    }, 1500);
+                }
+            });
+        });
+    </script> 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script> 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
+
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDi_kfB8y9f5gDhDkm7YfiSyVCgqrzrY3E",
+  authDomain: "grain-gain.firebaseapp.com",
+  projectId: "grain-gain",
+  storageBucket: "grain-gain.firebasestorage.app",
+  messagingSenderId: "680215356865",
+  appId: "1:680215356865:web:fb629ccfede3ad117bbb40",
+  measurementId: "G-BZT1WM5R2P"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const username = document.getElementById("fullname").value;
+const email = document.getElementById("email").value; 
+const password = document.getElementById("password").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
+
+
+const submit = document.getElementById("submitBtn");
+
+submit.addEventListener("click", function(event){ 
+event.preventDefault();
+
+alert("works");
+
+})
+
+
+</script> -->
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <script>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
+      
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+      
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDi_kfB8y9f5gDhDkm7YfiSyVCgqrzrY3E",
+          authDomain: "grain-gain.firebaseapp.com",
+          projectId: "grain-gain",
+          storageBucket: "grain-gain.firebasestorage.app",
+          messagingSenderId: "680215356865",
+          appId: "1:680215356865:web:fb629ccfede3ad117bbb40",
+          measurementId: "G-BZT1WM5R2P"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      
+        //input fields
+      
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+      
+      
+          const submit = document.getElementById('submitBtn');
+          submit.addEventListener("click", function(event){
+              event.preventDefault(); //prevents the page from refreshing 
+              alert(5);        
+      
+              
+      
+      
+      
+          }) -->
+        
+
+        
+
+
+
+
+    </script>
+
+</body>
+</html>

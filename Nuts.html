@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables</title>
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <style>
+        body {
+            padding-bottom: 70px; /* Adjust based on navbar height */
+        }
+        .category-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .category-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .product-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-nutrition {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .nutrition-item {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <a href="Home.html" class="back-button">← Back to Categories</a>
+    
+    <div class="category-header">
+        <div class="category-emoji">🥜</div>
+        <h1>Nuts</h1>
+    </div>
+
+    <div class="products-grid">
+        <!-- Product Container Template -->
+       
+    <div class="product-container">
+        <div class="product-name">Almonds</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 579 kcal</div>
+            <div class="nutrition-item">Protein: 21g</div>
+            <div class="nutrition-item">Carbs: 22g</div>
+            <div class="nutrition-item">Fat: 50g</div>
+            <div class="nutrition-item">Fiber: 12g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Walnuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 654 kcal</div>
+            <div class="nutrition-item">Protein: 15g</div>
+            <div class="nutrition-item">Carbs: 14g</div>
+            <div class="nutrition-item">Fat: 65g</div>
+            <div class="nutrition-item">Fiber: 7g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Cashews</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 553 kcal</div>
+            <div class="nutrition-item">Protein: 18g</div>
+            <div class="nutrition-item">Carbs: 30g</div>
+            <div class="nutrition-item">Fat: 44g</div>
+            <div class="nutrition-item">Fiber: 3g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Pistachios</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 562 kcal</div>
+            <div class="nutrition-item">Protein: 20g</div>
+            <div class="nutrition-item">Carbs: 28g</div>
+            <div class="nutrition-item">Fat: 45g</div>
+            <div class="nutrition-item">Fiber: 10g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Hazelnuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 628 kcal</div>
+            <div class="nutrition-item">Protein: 15g</div>
+            <div class="nutrition-item">Carbs: 17g</div>
+            <div class="nutrition-item">Fat: 61g</div>
+            <div class="nutrition-item">Fiber: 10g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Pecans</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 691 kcal</div>
+            <div class="nutrition-item">Protein: 9g</div>
+            <div class="nutrition-item">Carbs: 14g</div>
+            <div class="nutrition-item">Fat: 72g</div>
+            <div class="nutrition-item">Fiber: 10g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Macadamia Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 718 kcal</div>
+            <div class="nutrition-item">Protein: 8g</div>
+            <div class="nutrition-item">Carbs: 14g</div>
+            <div class="nutrition-item">Fat: 76g</div>
+            <div class="nutrition-item">Fiber: 9g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Brazil Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 659 kcal</div>
+            <div class="nutrition-item">Protein: 14g</div>
+            <div class="nutrition-item">Carbs: 12g</div>
+            <div class="nutrition-item">Fat: 66g</div>
+            <div class="nutrition-item">Fiber: 8g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Pine Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 673 kcal</div>
+            <div class="nutrition-item">Protein: 14g</div>
+            <div class="nutrition-item">Carbs: 13g</div>
+            <div class="nutrition-item">Fat: 68g</div>
+            <div class="nutrition-item">Fiber: 4g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Chestnuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 213 kcal</div>
+            <div class="nutrition-item">Protein: 2g</div>
+            <div class="nutrition-item">Carbs: 53g</div>
+            <div class="nutrition-item">Fat: 2g</div>
+            <div class="nutrition-item">Fiber: 6g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Peanuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 567 kcal</div>
+            <div class="nutrition-item">Protein: 26g</div>
+            <div class="nutrition-item">Carbs: 16g</div>
+            <div class="nutrition-item">Fat: 49g</div>
+            <div class="nutrition-item">Fiber: 9g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Coconut (Dried)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 660 kcal</div>
+            <div class="nutrition-item">Protein: 7g</div>
+            <div class="nutrition-item">Carbs: 24g</div>
+            <div class="nutrition-item">Fat: 57g</div>
+            <div class="nutrition-item">Fiber: 16g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Chironji (Charoli)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 656 kcal</div>
+            <div class="nutrition-item">Protein: 13g</div>
+            <div class="nutrition-item">Carbs: 26g</div>
+            <div class="nutrition-item">Fat: 59g</div>
+            <div class="nutrition-item">Fiber: 12g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Acorns</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 387 kcal</div>
+            <div class="nutrition-item">Protein: 6g</div>
+            <div class="nutrition-item">Carbs: 41g</div>
+            <div class="nutrition-item">Fat: 24g</div>
+            <div class="nutrition-item">Fiber: 4g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Ginkgo Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 182 kcal</div>
+            <div class="nutrition-item">Protein: 4g</div>
+            <div class="nutrition-item">Carbs: 40g</div>
+            <div class="nutrition-item">Fat: 1g</div>
+            <div class="nutrition-item">Fiber: 2g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Kola Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 150 kcal</div>
+            <div class="nutrition-item">Protein: 1g</div>
+            <div class="nutrition-item">Carbs: 36g</div>
+            <div class="nutrition-item">Fat: 0g</div>
+            <div class="nutrition-item">Fiber: 0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Bitter Kola</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 210 kcal</div>
+            <div class="nutrition-item">Protein: 8g</div>
+            <div class="nutrition-item">Carbs: 10g</div>
+            <div class="nutrition-item">Fat: 1g</div>
+            <div class="nutrition-item">Fiber: 3g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Beech Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 576 kcal</div>
+            <div class="nutrition-item">Protein: 6g</div>
+            <div class="nutrition-item">Carbs: 38g</div>
+            <div class="nutrition-item">Fat: 50g</div>
+            <div class="nutrition-item">Fiber: 7g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Candlenuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 692 kcal</div>
+            <div class="nutrition-item">Protein: 9g</div>
+            <div class="nutrition-item">Carbs: 4g</div>
+            <div class="nutrition-item">Fat: 72g</div>
+            <div class="nutrition-item">Fiber: 6g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Baru Nuts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 564 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 24g</div>
+            <div class="nutrition-item">Fat: 42g</div>
+            <div class="nutrition-item">Fiber: 14g</div>
+        </div>
+    </div>
+    
+
+       
+    </div>
+
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main">
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+    </nav>
+</body>
+</html>

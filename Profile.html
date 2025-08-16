@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <link rel="stylesheet" href="Profile.css">
+    <script src="grocery-app-js.js"></script>
+    <script type="module" src="profile.js" defer ></script>
+    <title>Document</title>
+</head>
+<body>    
+    <!-- Profile Page -->
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <div class="profile-card">
+            <div class="profile-picture"></div>
+            <div class="profile-info">
+                <h2><span id="fullName"></span></h2>
+                <p><span id="email"></span></p>
+            </div>
+            <button class="sign-out-button" id="sign-out-btn"  onclick="location.href='Sign-in.html'">Sign Out</button>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main" >
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+        <!-- <button class="nav-item" id="signout-button">
+            🚪<span>Sign Out</span>
+        </button> -->
+    </nav>
+</body>
+</html>

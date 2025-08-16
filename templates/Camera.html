@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Camera.css">
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <script src="grocery-app-js.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- <video autoplay></video>
+    <button onclick="Media_Take_input()">Open Camera</button> -->
+
+    <div class="video-container">
+        <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Video feed">
+        <button onclick="toggleCamera()" id="camera-toggle">Start Detection</button>
+    </div>
+
+    <!-- <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script> -->
+    <script>
+        
+        let isDetecting = false;
+    
+    function toggleCamera() {
+        const videoFeed = document.getElementById('video-feed');
+        const button = document.getElementById('camera-toggle');
+        
+        if (!isDetecting) {
+            videoFeed.style.display = 'block';
+            button.textContent = 'Stop Detection';
+        } else {
+            videoFeed.style.display = 'none';
+            button.textContent = 'Start Detection';
+        }
+        
+        isDetecting = !isDetecting;
+    }
+        // function Media_Take_input() {
+        //     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+        //     .then(stream => {
+        //         let video = document.querySelector('video');
+        //         video.srcObject = stream;
+        //         video.onloadedmetadata = () => {
+        //             video.play();
+        //         };
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
+        // }
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main" >
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+        <!-- <button class="nav-item" id="signout-button">
+            🚪<span>Sign Out</span>
+        </button> -->
+    </nav>
+</body>
+</html>

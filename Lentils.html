@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables</title>
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <style>
+        body {
+            padding-bottom: 70px; /* Adjust based on navbar height */
+        }
+        .category-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .category-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .product-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-nutrition {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .nutrition-item {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <a href="Home.html" class="back-button">← Back to Categories</a>
+    
+    <div class="category-header">
+        <div class="category-emoji">🫘</div>
+        <h1>Lentils</h1>
+    </div>
+
+    <div class="products-grid">
+        <!-- Product Container Template -->
+        
+    <div class="product-container">
+        <div class="product-name">Masoor Dal (Red Lentils)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 350 kcal</div>
+            <div class="nutrition-item">Protein: 25g</div>
+            <div class="nutrition-item">Carbs: 60g</div>
+            <div class="nutrition-item">Fat: 1.2g</div>
+            <div class="nutrition-item">Fiber: 8.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Toor Dal (Pigeon Peas)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 355 kcal</div>
+            <div class="nutrition-item">Protein: 22g</div>
+            <div class="nutrition-item">Carbs: 63g</div>
+            <div class="nutrition-item">Fat: 1.5g</div>
+            <div class="nutrition-item">Fiber: 7.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Moong Dal (Green Gram)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 347 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 59g</div>
+            <div class="nutrition-item">Fat: 1.3g</div>
+            <div class="nutrition-item">Fiber: 8.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Urad Dal (Black Gram)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 340 kcal</div>
+            <div class="nutrition-item">Protein: 25g</div>
+            <div class="nutrition-item">Carbs: 58g</div>
+            <div class="nutrition-item">Fat: 1.2g</div>
+            <div class="nutrition-item">Fiber: 7.5g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Chana Dal (Bengal Gram)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 360 kcal</div>
+            <div class="nutrition-item">Protein: 21g</div>
+            <div class="nutrition-item">Carbs: 61g</div>
+            <div class="nutrition-item">Fat: 1.4g</div>
+            <div class="nutrition-item">Fiber: 10.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Masoor Whole</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 352 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 60g</div>
+            <div class="nutrition-item">Fat: 1.3g</div>
+            <div class="nutrition-item">Fiber: 8.5g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Green Moong Whole</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 345 kcal</div>
+            <div class="nutrition-item">Protein: 23g</div>
+            <div class="nutrition-item">Carbs: 58g</div>
+            <div class="nutrition-item">Fat: 1.1g</div>
+            <div class="nutrition-item">Fiber: 9.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Yellow Moong Dal</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 348 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 59g</div>
+            <div class="nutrition-item">Fat: 1.2g</div>
+            <div class="nutrition-item">Fiber: 7.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Black Chickpeas</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 378 kcal</div>
+            <div class="nutrition-item">Protein: 19g</div>
+            <div class="nutrition-item">Carbs: 62g</div>
+            <div class="nutrition-item">Fat: 6.0g</div>
+            <div class="nutrition-item">Fiber: 12.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Kabuli Chana (Chickpeas)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 365 kcal</div>
+            <div class="nutrition-item">Protein: 19g</div>
+            <div class="nutrition-item">Carbs: 61g</div>
+            <div class="nutrition-item">Fat: 5.0g</div>
+            <div class="nutrition-item">Fiber: 10.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Rajma (Kidney Beans)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 333 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 60g</div>
+            <div class="nutrition-item">Fat: 1.0g</div>
+            <div class="nutrition-item">Fiber: 8.5g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Lobia (Black-eyed Peas)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 340 kcal</div>
+            <div class="nutrition-item">Protein: 22g</div>
+            <div class="nutrition-item">Carbs: 62g</div>
+            <div class="nutrition-item">Fat: 1.5g</div>
+            <div class="nutrition-item">Fiber: 10.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Horse Gram</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 321 kcal</div>
+            <div class="nutrition-item">Protein: 22g</div>
+            <div class="nutrition-item">Carbs: 57g</div>
+            <div class="nutrition-item">Fat: 0.5g</div>
+            <div class="nutrition-item">Fiber: 12.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Moth Beans</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 343 kcal</div>
+            <div class="nutrition-item">Protein: 23g</div>
+            <div class="nutrition-item">Carbs: 60g</div>
+            <div class="nutrition-item">Fat: 1.6g</div>
+            <div class="nutrition-item">Fiber: 9.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Soybeans</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 450 kcal</div>
+            <div class="nutrition-item">Protein: 36g</div>
+            <div class="nutrition-item">Carbs: 30g</div>
+            <div class="nutrition-item">Fat: 19.0g</div>
+            <div class="nutrition-item">Fiber: 9.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Green Peas (Dried)</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 342 kcal</div>
+            <div class="nutrition-item">Protein: 25g</div>
+            <div class="nutrition-item">Carbs: 57g</div>
+            <div class="nutrition-item">Fat: 2.0g</div>
+            <div class="nutrition-item">Fiber: 10.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Adzuki Beans</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 329 kcal</div>
+            <div class="nutrition-item">Protein: 22g</div>
+            <div class="nutrition-item">Carbs: 58g</div>
+            <div class="nutrition-item">Fat: 0.6g</div>
+            <div class="nutrition-item">Fiber: 9.5g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Fava Beans</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 333 kcal</div>
+            <div class="nutrition-item">Protein: 26g</div>
+            <div class="nutrition-item">Carbs: 56g</div>
+            <div class="nutrition-item">Fat: 1.5g</div>
+            <div class="nutrition-item">Fiber: 10.0g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Lentil Sprouts</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 115 kcal</div>
+            <div class="nutrition-item">Protein: 9g</div>
+            <div class="nutrition-item">Carbs: 18g</div>
+            <div class="nutrition-item">Fat: 0.4g</div>
+            <div class="nutrition-item">Fiber: 1.5g</div>
+        </div>
+    </div>
+    
+
+    <div class="product-container">
+        <div class="product-name">Cowpeas</div>
+        <div class="product-nutrition">
+            <div class="nutrition-item">Calories: 343 kcal</div>
+            <div class="nutrition-item">Protein: 24g</div>
+            <div class="nutrition-item">Carbs: 60g</div>
+            <div class="nutrition-item">Fat: 1.3g</div>
+            <div class="nutrition-item">Fiber: 9.0g</div>
+        </div>
+    </div>
+    
+
+       
+    </div>
+
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main">
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+    </nav>
+</body>
+</html>

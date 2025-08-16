@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommendation System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .type-selector {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .recommendation-item {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .recommendation-item:hover {
+            background-color: #f0f0f0;
+        }
+        .recommendations-container {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .recommendation-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .loading {
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
+        </style>
+        <link rel="stylesheet" href="grocery-app-css.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Food Recommendation System</h1>
+        
+        <div class="type-selector">
+            <label>
+                <input type="radio" name="rec-type" value="veg" checked> Vegetarian to Vegetarian
+            </label>
+            <label>
+                <input type="radio" name="rec-type" value="veg-to-nonveg"> Vegetarian to Non-Vegetarian
+            </label>
+            <label>
+                <input type="radio" name="rec-type" value="nonveg-to-veg"> Non-Vegetarian to Vegetarian
+            </label>
+        </div>
+        
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Start typing a food name..."
+                autocomplete="off"
+            >
+            <div class="dropdown" id="searchDropdown"></div>
+        </div>
+        
+        <div class="loading">Finding recommendations...</div>
+        
+        <div class="recommendations-container" id="recommendationsContainer"></div>
+    </div>
+
+    <script>
+        let foodItems = [];
+        let typingTimer;
+        const doneTypingInterval = 300;
+
+        // Load food items on page load
+        $(document).ready(function() {
+            $.get('/food-items', function(response) {
+                if (response.status === 'success') {
+                    foodItems = response.items;
+                }
+            });
+        });
+
+        $('#searchInput').on('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const dropdown = $('#searchDropdown');
+            
+            if (searchTerm) {
+                const matches = foodItems.filter(item => 
+                    item.toLowerCase().includes(searchTerm)
+                ).slice(0, 5);
+                
+                dropdown.html('');
+                matches.forEach(item => {
+                    dropdown.append(`
+                        <div class="recommendation-item">${item}</div>
+                    `);
+                });
+                dropdown.show();
+            } else {
+                dropdown.hide();
+            }
+        });
+
+        $(document).on('click', '.recommendation-item', function() {
+            const foodName = $(this).text();
+            $('#searchInput').val(foodName);
+            $('#searchDropdown').hide();
+            getRecommendations(foodName);
+        });
+
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-container').length) {
+                $('#searchDropdown').hide();
+            }
+        });
+
+        function getRecommendations(foodName) {
+            const recType = $('input[name="rec-type"]:checked').val();
+            $('.loading').show();
+            
+            $.ajax({
+                url: '/recommend',
+                method: 'POST',
+                data: {
+                    user_input: foodName,
+                    type: recType
+                },
+                success: function(response) {
+                    $('.loading').hide();
+                    
+                    if (response.status === 'success') {
+                        displayRecommendations(response.recommendations);
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function() {
+                    $('.loading').hide();
+                    alert('Error fetching recommendations');
+                }
+            });
+        }
+
+        function displayRecommendations(recommendations) {
+            const container = $('#recommendationsContainer');
+            container.html('');
+            
+            recommendations.forEach(item => {
+                container.append(`
+                    <div class="recommendation-card">
+                        <h3>${item.name}</h3>
+                    </div>
+                `);
+            });
+        }
+    </script>
+    <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main" >
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+        <!-- <button class="nav-item" id="signout-button">
+            🚪<span>Sign Out</span>
+        </button> -->
+    </nav>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grocery-app-css.css">
+    <script src="grocery-app-js.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="search-bar">
+        <input type="text" placeholder="Search items..." >
+    </div> -->
+    <!-- Navigation Bar -->
+    <!-- <nav id="navigation-bar" class="nav-bar">
+        <button class="nav-item" data-screen="main" >
+            <a href="Home.html">🏠</a>
+        </button>
+        <button class="nav-item" data-screen="search">
+            <a href="Search.html">🔍</a>
+        </button>
+        <button class="nav-item" data-screen="camera">
+            <a href="Camera.html">📷</a>
+        </button>
+        <button class="nav-item" data-screen="profile">
+            <a href="Profile.html">👤</a>
+        </button>
+        <button class="nav-item" id="signout-button"> -->
+            <!-- 🚪<span>Sign Out</span>
+        </button>
+    </nav>
+</body>
+</html> -->
